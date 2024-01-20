@@ -5,9 +5,10 @@ import sys
 pygame.init()
 
 # 設定
-SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480  # 画面サイズ
+SCREEN_WIDTH, SCREEN_HEIGHT = 480, 720  # 画面サイズ
 # プレイヤー設定
-PLAYER_SIZE = 30  
+P_SIZE_X = 15  # 横幅
+P_SIZE_Y = 30  # 縦幅
 GRAVITY = 1
 JUMP_POWER = 20
 
@@ -17,10 +18,10 @@ BLACK = (0, 0, 0)
 
 # 画面
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Mini Jump King")
+pygame.display.set_caption("Mini Jump Game")
 
 # プレイヤー
-player = pygame.Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT - PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE)
+player = pygame.Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT - P_SIZE_Y, P_SIZE_X, P_SIZE_Y)
 player_velocity = 0
 on_ground = True
 
@@ -41,8 +42,8 @@ while True:
     player_velocity += GRAVITY
 
     # 着地していたら、
-    if player.y >= SCREEN_HEIGHT - PLAYER_SIZE:
-        player.y = SCREEN_HEIGHT - PLAYER_SIZE
+    if player.y >= SCREEN_HEIGHT - P_SIZE_Y:
+        player.y = SCREEN_HEIGHT - P_SIZE_Y
         player_velocity = 0
         on_ground = True
 
